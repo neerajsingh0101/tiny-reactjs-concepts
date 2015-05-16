@@ -2,8 +2,8 @@ Tiny ReactJS concepts with BigBinary
 ====================================
 
 ```
-git clone https://github.com/bigbinary/reactjs-apps.git
-cd reactjs-apps
+git clone https://github.com/bigbinary/tiny-reactjs-concepts.git
+cd tiny-reactjs-concepts
 npm install
 npm start
 ```
