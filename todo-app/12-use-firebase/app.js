@@ -34,15 +34,18 @@ var App = React.createClass({
 
     this.firebase.on("value", function (data) {
                                         var obj = data.val();
-                                        var ids = Object.keys(obj);
-                                        var items = [];
-                                        ids.forEach(function(id) {
-                                            var item = obj[id];
-                                            item.id = id;
-                                            items.push(item);
-                                        });
+                                        console.log(obj);
+                                        if ( obj ) {
+                                          var ids = Object.keys(obj);
+                                          var items = [];
+                                          ids.forEach(function(id) {
+                                              var item = obj[id];
+                                              item.id = id;
+                                              items.push(item);
+                                          });
 
-                                        this.setState({ items: items });
+                                          this.setState({ items: items });
+                                        }
     }.bind(this)
                     );
   },
