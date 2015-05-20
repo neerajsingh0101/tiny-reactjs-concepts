@@ -30,6 +30,7 @@ var DisplayList = React.createClass({
 var App = React.createClass({
 
   componentWillMount () {
+    this.firebase = new Firebase("https://test251.firebaseio.com/");
   },
 
   getInitialState () {
@@ -41,8 +42,7 @@ var App = React.createClass({
     var item = _items.filter((item) => { return item.id == taskId } )[0];
     item.done = !item.done;
 
-    var firebase = new Firebase("https://test251.firebaseio.com/");
-    firebase.child(item.id).update({ done: item.done });
+    this.firebase.child(item.id).update({ done: item.done });
 
     console.log(item.done);
 
@@ -61,8 +61,7 @@ var App = React.createClass({
     var id = rand.generate();
     var newData = { text: text, done: false };
 
-    var firebase = new Firebase("https://test251.firebaseio.com/");
-    firebase.child(id).set(newData);
+    this.firebase.child(id).set(newData);
 
     newData["id"] = id;
     var newItems = this.state.items.concat(newData);
