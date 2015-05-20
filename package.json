@@ -8,6 +8,7 @@
   "author": "Neeraj Singh <neeraj@bigbinary.com>",
   "license": "ISC",
   "dependencies": {
+    "random-key": "0.3.2",
     "MD5": "1.2.1",
     "bluebird": "2.9.2",
     "flux": "2.0.1",
