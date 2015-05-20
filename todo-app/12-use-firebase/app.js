@@ -44,13 +44,12 @@ var App = React.createClass({
 
     this.firebase.child(item.id).update({ done: item.done });
 
-    console.log(item.done);
-
     this.setState({ items: _items });
   },
 
   handleDelete (taskId) {
-    var newItems = this.state.items.filter((item) => { return item.id != taskName } );
+    var newItems = this.state.items.filter((item) => { return item.id != taskId } );
+    this.firebase.child(taskId).remove();
     this.setState({ items: newItems });
   },
 
