@@ -31,6 +31,20 @@ var App = React.createClass({
 
   componentWillMount () {
     this.firebase = new Firebase("https://test251.firebaseio.com/");
+
+    this.firebase.on("value", function (data) {
+                                        var obj = data.val();
+                                        var ids = Object.keys(obj);
+                                        var items = [];
+                                        ids.forEach(function(id) {
+                                            var item = obj[id];
+                                            item.id = id;
+                                            items.push(item);
+                                        });
+
+                                        this.setState({ items: items });
+    }.bind(this)
+                    );
   },
 
   getInitialState () {
@@ -42,6 +56,7 @@ var App = React.createClass({
     var item = _items.filter((item) => { return item.id == taskId } )[0];
     item.done = !item.done;
 
+    console.log(item.id, item.done);
     this.firebase.child(item.id).update({ done: item.done });
 
     this.setState({ items: _items });
