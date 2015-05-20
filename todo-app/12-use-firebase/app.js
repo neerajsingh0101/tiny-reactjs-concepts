@@ -29,10 +29,7 @@ var DisplayList = React.createClass({
 
 var App = React.createClass({
 
-
   componentWillMount () {
-    var firebaseRef = new Firebase("https://sizzling-fire-7445.firebaseio.com/");
-    firebaseRef.set({ items: "Neeraj2" });
   },
 
   getInitialState () {
@@ -43,6 +40,12 @@ var App = React.createClass({
     var _items = this.state.items;
     var item = _items.filter((item) => { return item.id == taskId } )[0];
     item.done = !item.done;
+
+    var firebase = new Firebase("https://test251.firebaseio.com/");
+    firebase.child(item.id).update({ done: item.done });
+
+    console.log(item.done);
+
     this.setState({ items: _items });
   },
 
@@ -55,8 +58,16 @@ var App = React.createClass({
     event.preventDefault();
 
     var text = this.state.text;
-    var newItems = this.state.items.concat({ text: text, done: false, id: rand.generate()});
+    var id = rand.generate();
+    var newData = { text: text, done: false };
+
+    var firebase = new Firebase("https://test251.firebaseio.com/");
+    firebase.child(id).set(newData);
+
+    newData["id"] = id;
+    var newItems = this.state.items.concat(newData);
     this.setState({ text: '', items: newItems });
+
   },
 
   handleChange (event) {
