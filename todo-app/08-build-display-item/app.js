@@ -3,7 +3,7 @@ var React = require('react');
 var DisplayItem = React.createClass({
 
   getInitialState () {
-    return { done: false }
+    return { done: false };
   },
 
   handleOnChange () {
@@ -14,23 +14,30 @@ var DisplayItem = React.createClass({
 
   render () {
     var item = this.props.item;
-    return <li key={item}>
-            <input type="checkbox" checked={this.state.done} onChange={this.handleOnChange} />
-            { item }
-            <a href='#' onClick={this.props.handleDelete.bind(null, item)}>[x]</a>
-           </li>
+    return (
+      <li key={item}>
+        <input type="checkbox" checked={this.state.done} onChange={this.handleOnChange} />
+        { item }
+        <a href='#' onClick={this.props.handleDelete.bind(null, item)}>[x]</a>
+      </li>);
   }
 
-})
+});
 
 var DisplayList = React.createClass({
 
   displayItem (item) {
-    return <DisplayItem item={item} handleDelete={this.props.handleDelete} />
+    return (
+      <DisplayItem item={item} handleDelete={this.props.handleDelete} />
+    );
   },
 
   render () {
-    return <ul>{ this.props.items.map(this.displayItem) }</ul>
+    return (
+      <ul>
+        { this.props.items.map(this.displayItem) }
+      </ul>
+    );
   }
 
 });
@@ -38,11 +45,11 @@ var DisplayList = React.createClass({
 var App = React.createClass({
 
   getInitialState () {
-    return { text: '', items: [] }
+    return { text: '', items: [] };
   },
 
   handleDelete (itemToBeDeleted) {
-    var newItems = this.state.items.filter((item) => { return item != itemToBeDeleted } );
+    var newItems = this.state.items.filter((item) => { return (item !== itemToBeDeleted); } );
     this.setState({ items: newItems });
   },
 

@@ -5,23 +5,31 @@ var DisplayItem = React.createClass({
 
   render () {
     var item = this.props.item;
-    return <li key={item.id}>
-            <input type="checkbox" checked={item.done} onChange={this.props.handleDone.bind(null, item.id)} />
-            { item.text }
-            <a href='#' onClick={this.props.handleDelete.bind(null, item.id)}>[x]</a>
-           </li>
+    return (
+      <li key={item.id}>
+        <input type="checkbox" checked={item.done} onChange={this.props.handleDone.bind(null, item.id)} />
+        { item.text }
+        <a href='#' onClick={this.props.handleDelete.bind(null, item.id)}>[x]</a>
+      </li>
+    );
   }
 
-})
+});
 
 var DisplayList = React.createClass({
 
   displayItem (item) {
-    return <DisplayItem item={item} handleDelete={this.props.handleDelete} handleDone={this.props.handleDone} />
+    return (
+      <DisplayItem item={item} handleDelete={this.props.handleDelete} handleDone={this.props.handleDone} />
+    );
   },
 
   render () {
-    return <ul>{ this.props.items.map(this.displayItem) }</ul>
+    return (
+      <ul>
+        { this.props.items.map(this.displayItem) }
+      </ul>
+    );
   }
 
 });
@@ -29,18 +37,18 @@ var DisplayList = React.createClass({
 var App = React.createClass({
 
   getInitialState () {
-    return { text: '', items: [] }
+    return { text: '', items: [] };
   },
 
   handleDone (taskId) {
     var _items = this.state.items;
-    var item = _items.filter((item) => { return item.id == taskId } )[0];
+    var item = _items.filter((item) => { return (item.id === taskId); } )[0];
     item.done = !item.done;
     this.setState({ items: _items });
   },
 
   handleDelete (taskId) {
-    var newItems = this.state.items.filter((item) => { return item.id != taskName } );
+    var newItems = this.state.items.filter((item) => { return (item.id !== taskId); } );
     this.setState({ items: newItems });
   },
 
@@ -58,7 +66,7 @@ var App = React.createClass({
   },
 
   handleClearCompleted () {
-    var newItems = this.state.items.filter((item) => { return !item.done } );
+    var newItems = this.state.items.filter((item) => { return !item.done; } );
     this.setState({ items: newItems });
   },
 
@@ -73,8 +81,8 @@ var App = React.createClass({
 
         <p>
           All({ this.state.items.length }) |
-          Completed({ this.state.items.filter((item) => { return item.done }).length })
-          Pending({ this.state.items.filter((item) => { return !item.done }).length }) |
+          Completed({ this.state.items.filter((item) => { return item.done; }).length })
+          Pending({ this.state.items.filter((item) => { return !item.done; }).length }) |
           <a href='#' onClick={this.handleClearCompleted}>Clear Completed</a>
         </p>
 
