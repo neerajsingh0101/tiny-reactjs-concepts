@@ -3,7 +3,7 @@ var React = require('react');
 var HelloMessage = React.createClass({
 
   getInitialState () {
-    return { text: '', items: [] }
+    return { text: '', items: [] };
   },
 
   handleSubmit (event) {

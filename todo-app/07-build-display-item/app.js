@@ -1,27 +1,15 @@
 var React = require('react');
 
 var DisplayItem = React.createClass({
-
-  getInitialState () {
-    return { done: false }
-  },
-
-  handleOnChange () {
-    var _done = !this.state.done;
-    this.setState({ done: _done });
-  },
-
-
   render () {
     var item = this.props.item;
     return <li key={item}>
-            <input type="checkbox" checked={this.state.done} onChange={this.handleOnChange} />
             { item }
             <a href='#' onClick={this.props.handleDelete.bind(null, item)}>[x]</a>
            </li>
   }
 
-})
+});
 
 var DisplayList = React.createClass({
 
