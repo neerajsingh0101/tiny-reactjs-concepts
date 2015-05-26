@@ -3,20 +3,22 @@ var React = require('react');
 var DisplayList = React.createClass({
 
   displayItem (item) {
-    return <li key={item}>{ item }</li>
+    return (
+      <li key={item}>{ item }</li>
+    );
   },
 
   render () {
     return (
       <ul>{ this.props.items.map(this.displayItem) }</ul>
-    )
+    );
   }
 });
 
 var App = React.createClass({
 
   getInitialState () {
-    return { text: '', items: [] }
+    return { text: '', items: [] };
   },
 
   handleSubmit (event) {
