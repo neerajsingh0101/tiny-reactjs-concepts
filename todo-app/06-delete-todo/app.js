@@ -3,16 +3,18 @@ var React = require('react');
 var DisplayList = React.createClass({
 
   displayItem (item) {
-    return <li key={item}>
-            { item }
-            <a href='#' onClick={this.props.handleDelete.bind(null, item)}>[x]</a>
-           </li>
+    return (
+      <li key={item}>
+        { item }
+      <a href='#' onClick={this.props.handleDelete.bind(null, item)}>[x]</a>
+      </li>
+    );
   },
 
   render () {
     return (
       <ul>{ this.props.items.map(this.displayItem) }</ul>
-    )
+    );
   }
 
 });
@@ -20,11 +22,11 @@ var DisplayList = React.createClass({
 var App = React.createClass({
 
   getInitialState () {
-    return { text: '', items: [] }
+    return { text: '', items: [] };
   },
 
   handleDelete (itemToBeDeleted) {
-    var newItems = this.state.items.filter((item) => { return item != itemToBeDeleted } );
+    var newItems = this.state.items.filter((item) => { return (item !== itemToBeDeleted); } );
     this.setState({ items: newItems });
   },
 
