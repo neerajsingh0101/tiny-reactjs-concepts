@@ -1,7 +1,7 @@
 # Tiny ReactJS concepts with BigBinary
 
 
-Videos are available at [here](http://videos.bigbinary.com/categories/tiny-reactjs-concepts) .
+Videos are available [here](http://videos.bigbinary.com/categories/tiny-reactjs-concepts) .
 
 
 #### Setting up the development environment
