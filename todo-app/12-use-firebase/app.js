@@ -15,7 +15,7 @@ var DisplayItem = React.createClass({
     );
   }
 
-})
+});
 
 var DisplayList = React.createClass({
 
@@ -59,7 +59,7 @@ var App = React.createClass({
   },
 
   getInitialState () {
-    return { text: '', items: [] }
+    return { text: '', items: [] };
   },
 
   handleDone (taskId) {
