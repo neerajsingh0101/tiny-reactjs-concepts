@@ -15,7 +15,7 @@ var DisplayItem = React.createClass({
     return (
       <li key={item.id}>
         <input type="checkbox" checked={item.done} onChange={this.props.handleDone.bind(null, item.id)} />
-        { item.text }
+        <label>{ item.text }</label>
         <a href='#' className="destroy" onClick={this.props.handleDelete.bind(null, item.id)}>[x]</a>
       </li>
     );
