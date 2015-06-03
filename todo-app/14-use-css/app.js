@@ -126,17 +126,19 @@ var App = React.createClass({
           <button> Submit </button>
         </form>
 
+
+
+        <DisplayList items={this.state.items}
+                     handleDone={this.handleDone}
+                     handleDelete={this.handleDelete} />
         <footer>
           All({ this.state.items.length }) |
           Completed({ this.state.items.filter((item) => { return item.done; }).length })
           Pending({ this.state.items.filter((item) => { return !item.done; }).length }) |
           <a href='#' onClick={this.handleClearCompleted}>Clear Completed</a>
         </footer>
-
-        <DisplayList items={this.state.items}
-                     handleDone={this.handleDone}
-                     handleDelete={this.handleDelete} />
       </div>
+
     );
   }
 
