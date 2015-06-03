@@ -122,7 +122,7 @@ var App = React.createClass({
       <div>
         <h1> TODO </h1>
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} value={this.state.text} />
+          <input type="text" onChange={this.handleChange} value={this.state.text} />
           <button> Submit </button>
         </form>
 
