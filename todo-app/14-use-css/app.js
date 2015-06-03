@@ -32,7 +32,9 @@ var DisplayList = React.createClass({
 
   displayItem (item) {
     return (
-      <DisplayItem key={item.id} item={item} handleDelete={this.props.handleDelete} handleDone={this.props.handleDone} />
+      <section id="main">
+        <DisplayItem key={item.id} item={item} handleDelete={this.props.handleDelete} handleDone={this.props.handleDone} />
+      </section>
     );
   },
 
