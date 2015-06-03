@@ -40,7 +40,7 @@ var DisplayList = React.createClass({
 
   render () {
     return (
-      <ul>
+      <ul id="todo-list">
         { this.props.items.map(this.displayItem) }
       </ul>
     );
