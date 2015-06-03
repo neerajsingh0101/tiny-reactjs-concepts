@@ -123,7 +123,6 @@ var App = React.createClass({
         <h1> TODO </h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.handleChange} value={this.state.text} />
-          <button> Submit </button>
         </form>
 
 
