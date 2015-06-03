@@ -14,9 +14,16 @@ var DisplayItem = React.createClass({
     var item = this.props.item;
     return (
       <li key={item.id} className={item.done ? "done" : ""}>
-        <input type="checkbox" checked={item.done} onChange={this.props.handleDone.bind(null, item.id)} />
+        <input  type="checkbox"
+                checked={item.done}
+                onChange={this.props.handleDone.bind(null, item.id)} />
+
         <label>{ item.text }</label>
-        <a href='#' className="destroy" onClick={this.props.handleDelete.bind(null, item.id)}>[x]</a>
+
+        <a href='#' className="destroy"
+                    onClick={this.props.handleDelete.bind(null, item.id)}>
+          [x]
+        </a>
       </li>
     );
   }
@@ -33,7 +40,10 @@ var DisplayList = React.createClass({
   displayItem (item) {
     return (
       <section id="main">
-        <DisplayItem key={item.id} item={item} handleDelete={this.props.handleDelete} handleDone={this.props.handleDone} />
+        <DisplayItem  key={item.id}
+                      item={item}
+                      handleDelete={this.props.handleDelete}
+                      handleDone={this.props.handleDone} />
       </section>
     );
   },
@@ -124,8 +134,6 @@ var App = React.createClass({
         <form onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.handleChange} value={this.state.text} />
         </form>
-
-
 
         <DisplayList items={this.state.items}
                      handleDone={this.handleDone}
