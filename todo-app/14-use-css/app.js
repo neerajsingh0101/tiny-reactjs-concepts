@@ -140,4 +140,4 @@ var App = React.createClass({
 
 });
 
-React.render(<App />, document.body);
+React.render(<App />, document.getElementById("todoapp"));
