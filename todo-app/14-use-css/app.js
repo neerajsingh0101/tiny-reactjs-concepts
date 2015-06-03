@@ -145,7 +145,6 @@ var App = React.createClass({
           <a href='#' onClick={this.handleClearCompleted}>Clear Completed</a>
         </footer>
       </div>
-
     );
   }
 
