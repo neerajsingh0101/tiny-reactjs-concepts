@@ -7,6 +7,7 @@ var DisplayItem = React.createClass({
   propTypes: {
       handleDelete: React.PropTypes.func.isRequired,
       handleDone: React.PropTypes.func.isRequired,
+      handleEditedContent: React.PropTypes.func.isRequired,
       item: React.PropTypes.object.isRequired,
   },
 
@@ -21,6 +22,7 @@ var DisplayItem = React.createClass({
   handleEditKeyPress (event) {
     if (event.keyCode === 13) {
       this.setState({ editing: false });
+      this.props.handleEditedContent(this.props.item.id, this.state._text);
     }
   },
 
@@ -69,6 +71,7 @@ var DisplayList = React.createClass({
 
   propTypes: {
       handleDelete: React.PropTypes.func.isRequired,
+      handleEditedContent: React.PropTypes.func.isRequired,
       handleDone: React.PropTypes.func.isRequired
   },
 
@@ -78,6 +81,7 @@ var DisplayList = React.createClass({
         <DisplayItem  key={item.id}
                       item={item}
                       handleDelete={this.props.handleDelete}
+                     handleEditedContent={this.props.handleEditedContent}
                       handleDone={this.props.handleDone} />
       </section>
     );
@@ -125,7 +129,6 @@ var App = React.createClass({
     var item = _items.filter((item) => { return (item.id === taskId); } )[0];
     item.done = !item.done;
 
-    console.log(item.id, item.done);
     this.firebase.child(item.id).update({ done: item.done });
 
     this.setState({ items: _items });
@@ -152,6 +155,16 @@ var App = React.createClass({
 
   },
 
+  handleEditedContent (taskId, newText) {
+    var _items = this.state.items;
+    var item = _items.filter((item) => { return (item.id === taskId); } )[0];
+    item.text = newText;
+
+    this.firebase.child(item.id).update({ text: item.text });
+
+    this.setState({ items: _items });
+  },
+
   handleChange (event) {
     var text = event.target.value;
     this.setState({ text: text });
@@ -172,6 +185,7 @@ var App = React.createClass({
 
         <DisplayList items={this.state.items}
                      handleDone={this.handleDone}
+                     handleEditedContent={this.handleEditedContent}
                      handleDelete={this.handleDelete} />
         <footer>
           All({ this.state.items.length }) |
