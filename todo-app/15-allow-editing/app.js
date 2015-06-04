@@ -11,13 +11,23 @@ var DisplayItem = React.createClass({
   },
 
   getInitialState () {
-    return { editing: false };
+    return { editing: false, _text: this.props.item.text };
   },
 
   handleEditing () {
     this.setState({ editing: true });
   },
 
+  handleEditKeyPress (event) {
+    if (event.keyCode === 13) {
+      this.setState({ editing: false });
+    }
+  },
+
+  handleEditChange (event) {
+    var text = event.target.value;
+    this.setState({ _text: text });
+  },
 
   render () {
     var item = this.props.item;
@@ -37,14 +47,18 @@ var DisplayItem = React.createClass({
                   checked={item.done}
                   onChange={this.props.handleDone.bind(null, item.id)} />
 
-          <label>{ item.text }</label>
+          <label>{ this.state._text }</label>
 
           <a href='#' className="destroy"
                       onClick={this.props.handleDelete.bind(null, item.id)}>
             [x]
           </a>
         </div>
-        <input type="text" value={item.text} style={editStyle} />
+        <input  type="text"
+                value={this.state._text}
+                onKeyDown={this.handleEditKeyPress}
+                onChange={this.handleEditChange}
+                style={editStyle} />
       </li>
     );
   }
