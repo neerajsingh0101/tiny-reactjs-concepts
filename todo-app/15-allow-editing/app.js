@@ -10,11 +10,29 @@ var DisplayItem = React.createClass({
       item: React.PropTypes.object.isRequired,
   },
 
+  getInitialState () {
+    return { editing: false };
+  },
+
+  handleEditing () {
+    this.setState({ editing: true });
+  },
+
+
   render () {
     var item = this.props.item;
+    var viewStyle = {};
+    var editStyle = {};
+
+    if (this.state.editing) {
+      viewStyle.display = "none";
+    } else {
+      editStyle.display = "none";
+    }
+
     return (
       <li key={item.id} className={item.done ? "done" : ""}>
-        <div>
+        <div onDoubleClick={this.handleEditing} style={viewStyle}>
           <input  type="checkbox"
                   checked={item.done}
                   onChange={this.props.handleDone.bind(null, item.id)} />
@@ -26,7 +44,7 @@ var DisplayItem = React.createClass({
             [x]
           </a>
         </div>
-        <input type="text" value={item.text} />
+        <input type="text" value={item.text} style={editStyle} />
       </li>
     );
   }
