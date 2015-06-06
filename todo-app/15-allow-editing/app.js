@@ -8,7 +8,7 @@ var DisplayItem = React.createClass({
       handleDelete: React.PropTypes.func.isRequired,
       handleDone: React.PropTypes.func.isRequired,
       handleEditedContent: React.PropTypes.func.isRequired,
-      item: React.PropTypes.object.isRequired,
+      item: React.PropTypes.object.isRequired
   },
 
   getInitialState () {

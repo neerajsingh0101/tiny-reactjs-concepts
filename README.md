@@ -16,3 +16,8 @@ npm start
 ```
 
 Then visit http://localhost:8080.
+
+
+#### Brought to you by
+
+[![BigBinary logo](http://bigbinary.com/assets/common/logo.png)](http://BigBinary.com)
