@@ -77,9 +77,8 @@ var DisplayList = React.createClass({
 
   displayItem (item) {
     return (
-      <section id="main">
+      <section id="main" key={item.id}>
         <DisplayItem item={item}
-                     key={item.id}
                      handleDelete={this.props.handleDelete}
                      handleEditedContent={this.props.handleEditedContent}
                      handleDone={this.props.handleDone}/>
