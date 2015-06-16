@@ -103,7 +103,6 @@ var App = React.createClass({
 
     this.firebase.on("value", (data) => {
                                         var obj = data.val();
-                                        console.log(obj);
                                         if ( obj ) {
                                           var ids = Object.keys(obj);
                                           var items = [];
