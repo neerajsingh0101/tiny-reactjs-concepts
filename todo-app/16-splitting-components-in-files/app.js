@@ -2,6 +2,8 @@ var React = require('react');
 var rand = require("random-key");
 var Firebase = require('firebase');
 
+const firebaseUrl = "https://test251.firebaseio.com/";
+
 var DisplayItem = React.createClass({
 
   propTypes: {
@@ -99,7 +101,7 @@ var DisplayList = React.createClass({
 var App = React.createClass({
 
   componentWillMount () {
-    this.firebase = new Firebase("https://test251.firebaseio.com/");
+    this.firebase = new Firebase(firebaseUrl);
 
     this.firebase.on("value", (data) => {
       var obj = data.val();
