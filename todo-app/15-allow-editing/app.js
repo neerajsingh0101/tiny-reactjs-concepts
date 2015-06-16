@@ -45,9 +45,9 @@ var DisplayItem = React.createClass({
     return (
       <li key={item.id} className={item.done ? "done" : ""}>
         <div onDoubleClick={this.handleEditing} style={viewStyle}>
-          <input  type="checkbox"
-                  checked={item.done}
-                  onChange={this.props.handleDone.bind(null, item.id)} />
+          <input type="checkbox"
+                 checked={item.done}
+                 onChange={this.props.handleDone.bind(null, item.id)} />
 
           <label>{ this.state._text }</label>
 
@@ -56,11 +56,11 @@ var DisplayItem = React.createClass({
             [x]
           </a>
         </div>
-        <input  type="text"
-                value={this.state._text}
-                onKeyDown={this.handleEditKeyPress}
-                onChange={this.handleEditChange}
-                style={editStyle} />
+        <input type="text"
+               value={this.state._text}
+               onKeyDown={this.handleEditKeyPress}
+               onChange={this.handleEditChange}
+               style={editStyle} />
       </li>
     );
   }
