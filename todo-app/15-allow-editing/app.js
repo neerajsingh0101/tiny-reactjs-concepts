@@ -70,9 +70,9 @@ var DisplayItem = React.createClass({
 var DisplayList = React.createClass({
 
   propTypes: {
-      handleDelete: React.PropTypes.func.isRequired,
-      handleEditedContent: React.PropTypes.func.isRequired,
-      handleDone: React.PropTypes.func.isRequired
+    handleDelete: React.PropTypes.func.isRequired,
+    handleEditedContent: React.PropTypes.func.isRequired,
+    handleDone: React.PropTypes.func.isRequired
   },
 
   displayItem (item) {
@@ -151,7 +151,6 @@ var App = React.createClass({
     newData.id = id;
     var newItems = this.state.items.concat(newData);
     this.setState({ text: '', items: newItems });
-
   },
 
   handleEditedContent (taskId, newText) {
