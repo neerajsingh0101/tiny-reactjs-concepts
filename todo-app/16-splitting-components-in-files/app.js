@@ -113,9 +113,7 @@ var App = React.createClass({
                                           });
 
                                           this.setState({ items: items });
-                                        }
-    }
-                    );
+                                        }});
   },
 
   getInitialState () {
