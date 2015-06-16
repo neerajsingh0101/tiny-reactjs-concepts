@@ -106,7 +106,7 @@ var App = React.createClass({
                                         if ( obj ) {
                                           var ids = Object.keys(obj);
                                           var items = [];
-                                          ids.forEach(function(id) {
+                                          ids.map((id) => {
                                               var item = obj[id];
                                               item.id = id;
                                               items.push(item);
