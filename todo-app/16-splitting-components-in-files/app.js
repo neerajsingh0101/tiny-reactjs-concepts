@@ -102,18 +102,18 @@ var App = React.createClass({
     this.firebase = new Firebase("https://test251.firebaseio.com/");
 
     this.firebase.on("value", (data) => {
-                                        var obj = data.val();
-                                        if ( obj ) {
-                                          var ids = Object.keys(obj);
-                                          var items = [];
-                                          ids.map((id) => {
-                                              var item = obj[id];
-                                              item.id = id;
-                                              items.push(item);
-                                          });
+      var obj = data.val();
+      if ( obj ) {
+        var ids = Object.keys(obj);
+        var items = [];
+        ids.map((id) => {
+            var item = obj[id];
+            item.id = id;
+            items.push(item);
+        });
 
-                                          this.setState({ items: items });
-                                        }});
+        this.setState({ items: items });
+    }});
   },
 
   getInitialState () {
