@@ -5,10 +5,10 @@ var Firebase = require('firebase');
 var DisplayItem = React.createClass({
 
   propTypes: {
-      handleDelete: React.PropTypes.func.isRequired,
-      handleDone: React.PropTypes.func.isRequired,
-      handleEditedContent: React.PropTypes.func.isRequired,
-      item: React.PropTypes.object.isRequired
+    handleDelete: React.PropTypes.func.isRequired,
+    handleDone: React.PropTypes.func.isRequired,
+    handleEditedContent: React.PropTypes.func.isRequired,
+    item: React.PropTypes.object.isRequired
   },
 
   getInitialState () {
