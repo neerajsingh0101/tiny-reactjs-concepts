@@ -101,7 +101,7 @@ var App = React.createClass({
   componentWillMount () {
     this.firebase = new Firebase("https://test251.firebaseio.com/");
 
-    this.firebase.on("value", function (data) {
+    this.firebase.on("value", (data) => {
                                         var obj = data.val();
                                         console.log(obj);
                                         if ( obj ) {
@@ -115,7 +115,7 @@ var App = React.createClass({
 
                                           this.setState({ items: items });
                                         }
-    }.bind(this)
+    }
                     );
   },
 
