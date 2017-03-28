@@ -11,3 +11,5 @@ var HelloMessage = React.createClass({
 });
 
 React.render(<HelloMessage />, document.body);
+
+module.exports = HelloMessage;
